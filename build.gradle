@@ -1,0 +1,35 @@
+plugins {
+    id 'application'
+}
+
+version = '0.1'
+description = 'Wii U Title Tools'
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // Use JUnit test framework.
+    testImplementation 'junit:junit:4.13.2'
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'bodoh69.wiiu.titles.App'
+}
+
+jar {
+    archiveFileName = "${project.name}.jar"
+    manifest {
+        attributes(
+                'Main-Class': application.mainClassName,
+                'Implementation-Title': project.description,
+                'Implementation-Version': project.version
+        )
+    }
+}
